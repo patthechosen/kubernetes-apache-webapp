@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-manifest
+  labels:
+    app: apache
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - name: apache
+        image: patthechosen/my-apache-container:v1
+        ports:
+        - containerPort: 80
